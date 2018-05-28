@@ -20,7 +20,7 @@ app.get("/movie", function(req, res) {
    var movies = [];
    request(url, function(error, response, body) {
       if (error) {
-         response.send("Error occurred");   
+         res.send("Error occurred");   
       }
       else {
          var parsedBody = JSON.parse(body);
@@ -36,9 +36,6 @@ app.get("/movie", function(req, res) {
                            };
                movies.push(movie);
             }
-         }
-         else {
-            response.send("Error occurred");
          }
       }
       
