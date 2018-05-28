@@ -12,11 +12,23 @@
 </div>
 
 <% if (movies) { %>
-    <ol>    
        <% movies.forEach(function(movie) { %>
-          <li><%= movie.title %></li> 
+           <div class="movie-info col-md-12">
+               <div class="col-md-4">
+                   <% if (movie.poster === "N/A") { %>
+                       <p>Poster Not found</p>
+                   <% } else { %>
+                       <img class="img-thumbnail" src="<%= movie.poster %>" alt="Poster Not Found">
+                   <% } %>
+               </div>
+               <div class="col-md-4">
+                   <%= movie.title %>
+               </div>
+               <div class="col-md-4">
+                   <%= movie.year %>
+               </div>
+           </div>
        <% }); %>
-    </ol>
 <% } %>
 
 

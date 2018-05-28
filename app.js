@@ -25,22 +25,23 @@ app.get("/movie", function(req, res) {
       else {
          var parsedBody = JSON.parse(body);
          var searchResults = parsedBody.Search;
-         
-         for (let i = 0; i < searchResults.length; i++) {
-            var searchResult = searchResults[i];
-            console.log(searchResult);
-            
-            var movie = {title: searchResult.Title,
-                         year: searchResult.Year,
-                         poster: searchResult.Poster,
-                         imdbId: searchResult.imdbId,
-                         type: searchResult.Type
-                        };
-            movies.push(movie);
+         if (searchResults) {
+            for (let i = 0; i < searchResults.length; i++) {
+               var searchResult = searchResults[i];
+               var movie = {title: searchResult.Title,
+                            year: searchResult.Year,
+                            poster: searchResult.Poster,
+                            imdbId: searchResult.imdbId,
+                            type: searchResult.Type
+                           };
+               movies.push(movie);
+            }
+         }
+         else {
+            response.send("Error occurred");
          }
       }
       
-      console.log(movies);
       res.render("movieLandingPage", {movies});
    });
 });
