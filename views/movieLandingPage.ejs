@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<div>
+    <h2>Search Movie here</h2>
+    
+    <div>
+        <form method="GET" action="/movie">
+            <input type="text" name="searchTerm"></input>
+            <input type="submit" value="Search Movie"></input>
+        </form>
+    </div>
+</div>
+
+<% if (movies) { %>
+    <ol>    
+       <% movies.forEach(function(movie) { %>
+          <li><%= movie.title %></li> 
+       <% }); %>
+    </ol>
+<% } %>
+
+
+<% include partials/footer %>
